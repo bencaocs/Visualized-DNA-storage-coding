@@ -15,7 +15,7 @@ public class EnsembleStableMaximum {
      * @param taille Le résultat de l'algorithme
      */
 	private static void affichage(int taille) {
-		System.out.println("La taille du plus grand ensemble stable est " + taille);
+		System.out.println("The maximum number of independent sets is " + taille);
 	}
 
     /**
@@ -61,17 +61,17 @@ public class EnsembleStableMaximum {
 		InputStreamReader ipsr = new InputStreamReader(ips);
 		BufferedReader br = new BufferedReader(ipsr);
 		String currentLine;
-        // On commence par lire la taille
+        // We start by reading the size
         g.setTailleInitiale(Integer.parseInt(br.readLine().toString()));
 		String delim = " ";
-        // On découpe la ligne suivant le délimiteur "espace"
+        // Draw lines according to the delimiter "space"
 		while ((currentLine = br.readLine()) != null) {
 			StringTokenizer tok = new StringTokenizer(currentLine, delim);
 			String token = tok.nextToken().toString();
-            // Le premier token lu est le numero du sommet
+           
 			int sommet = Integer.parseInt(token.substring(0, token.length()-1));
 			g.ajouterSommet(sommet);
-            // Tous les autres tokens sont ses voisins
+            
 			for (; tok.hasMoreTokens();) {
                 String s = tok.nextToken().toString();
                 if(!s.equals("[]")) {
@@ -91,13 +91,13 @@ public class EnsembleStableMaximum {
 	public static void main(String[] args) {
 		Graphe graphe = new Graphe();
         if(args.length != 1){
-            System.out.println("Argument 1 invalide, mettre le fichier .graphe");
+            System.out.println("Parameter 1 is invalid. Please set graph");
         } else {
             try {
                 graphe = lireFichier(new File(args[0]), graphe);
 				affichage(algo(graphe));
             } catch (IOException e) {
-				System.out.println("Nom de fichier non valide");
+				System.out.println("Invalid file name");
 			}
         }
 	}
